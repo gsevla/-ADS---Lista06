@@ -80,12 +80,15 @@ def sorteio():
             tService = c.lastArrival
             table[4].append(tService) # anterior + última chegada
         else:
-            tService += c.lastArrival
+            if((tService+c.lastArrival) >= (tService+c.attendanceTime)):
+                tService += c.lastArrival
+            else:
+                tService += c.attendanceTime
             table[4].append(tService)
-        table[5].append(0)
+        table[5].append(tService-tArrival)
         if(c.clientNumber == 1):
-            tFinal = (tArrival+c.attendanceTime)
-            table[6].append(tFinal)
+            tFinal = tService-tArrival
+            table[6].append(tService-tArrival)
         else:
             tFinal += c.attendanceTime
             table[6].append(tFinal)
