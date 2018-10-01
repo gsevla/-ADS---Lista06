@@ -62,7 +62,6 @@ def sorteio():
     tArrival = 0
     tAttendance = 0
     tFila = 0
-    tFinal = 0
     tBanco = 0
     tLivre = 0
 
@@ -101,12 +100,17 @@ def sorteio():
             #tAttendance += table[1][i+2]
             table[4][i+2] = tArrival+(table[3][i+1]-table[1][i+2])
         table[5].append(table[4][i+2]-table[2][i+2])
-        table[6].append(0)
-        table[7].append(0)
-        table[8].append(0)
+        table[6].append(table[3][i+2]+table[4][i+2])
+        table[7].append(table[3][i+2]+table[5][i+2])
+        table[8].append(table[1][i+2]-table[3][i+1]+table[5][i+2])
     
     for i in range(len(table[0])-2):
         print('|\t{}\t|\t    {}\t\t|\t    {}\t\t|\t    {}\t\t|\t    {}\t\t|\t{}\t|\t{}\t|\t    {}\t\t|\t    {}\t\t|'.format(table[0][i+2], table[1][i+2], table[2][i+2], table[3][i+2], table[4][i+2], table[5][i+2], table[6][i+2], table[7][i+2], table[8][i+2]))
+    for i in range(len(table[0])-1):
+        tAttendance += table[3][i+1]
+        tFila += table[5][i+1]
+        tBanco += table[7][i+1]
+        tLivre += table[8][i+1]
     print('\t\t\t\t\t\t\t\tTotal: {} \t\t\t\t\tTotal: {} \t\t\tTotal: {} \t\tTotal: {}'.format(tAttendance, tFila, tBanco, tLivre))
 
 
